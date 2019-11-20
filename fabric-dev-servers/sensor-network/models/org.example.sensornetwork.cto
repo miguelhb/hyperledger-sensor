@@ -1,0 +1,26 @@
+/**
+ * My commodity trading network
+ */
+
+namespace org.example.sensornetwork
+
+asset Room identified by roomID {
+    o String roomID
+    o Double temperature
+    o Double humidity
+   // o Double quantity
+    -->  Supervisor supervisor
+}
+
+participant Supervisor identified by supervisorID {
+    o String supervisorID
+    o String firstName
+    o String lastName
+}
+
+transaction NewMeasure {
+    --> Room room
+    --> Supervisor supervisor
+    o Double temp
+    o Double hum
+}
